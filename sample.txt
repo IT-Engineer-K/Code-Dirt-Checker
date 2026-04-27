@@ -1,0 +1,69 @@
+def calculate_tax_10_percent(price):
+    """標準税率(10%)の税込価格を計算する"""
+    tax_rate = 0.10
+    tax_amount = int(price * tax_rate)
+    total_price = price + tax_amount
+    return total_price
+
+def calculate_tax_8_percent(price):
+    """軽減税率(8%)の税込価格を計算する"""
+    tax_rate = 0.08
+    tax_amount = int(price * tax_rate)
+    total_price = price + tax_amount
+    return total_price
+
+def calculate_tax_5_percent(price):
+    """旧税率(5%)の税込価格を計算する"""
+    tax_rate = 0.05
+    tax_amount = int(price * tax_rate)
+    total_price = price + tax_amount
+    return total_price
+
+def calculate_tax_3_percent(price):
+    """旧税率(3%)の税込価格を計算する"""
+    tax_rate = 0.03
+    tax_amount = int(price * tax_rate)
+    total_price = price + tax_amount
+    return total_price
+
+def calculate_price_with_tax(price, item_type="standard"):
+    """
+    品目の種類に応じて税込価格を計算するメイン関数。
+    （わざわざ各条件で同じ計算手順を繰り返す冗長な実装）
+    """
+    if item_type == "standard":
+        # 標準税率の場合
+        tax_rate = 0.10
+        tax_amount = int(price * tax_rate)
+        total_price = price + tax_amount
+        return total_price
+    elif item_type == "reduced":
+        # 軽減税率（飲食料品など）の場合
+        tax_rate = 0.08
+        tax_amount = int(price * tax_rate)
+        total_price = price + tax_amount
+        return total_price
+    elif item_type == "old_5":
+        # 過去の税率（5%）のデータ処理用
+        tax_rate = 0.05
+        tax_amount = int(price * tax_rate)
+        total_price = price + tax_amount
+        return total_price
+    elif item_type == "old_3":
+        # 過去の税率（3%）のデータ処理用
+        tax_rate = 0.03
+        tax_amount = int(price * tax_rate)
+        total_price = price + tax_amount
+        return total_price
+    else:
+        # デフォルトのフォールバック
+        tax_rate = 0.10
+        tax_amount = int(price * tax_rate)
+        total_price = price + tax_amount
+        return total_price
+
+# テスト実行
+if __name__ == "__main__":
+    base_price = 1000
+    print(f"標準(10%): {calculate_price_with_tax(base_price, 'standard')}円")
+    print(f"軽減(8%): {calculate_price_with_tax(base_price, 'reduced')}円")
